@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import TodoTask from './Components/TodoTask';
 import {ITask } from './interfaces';
+import { convertTypeAcquisitionFromJson } from 'typescript';
 
 const  App: FC = () => {
 
@@ -25,6 +26,11 @@ const  App: FC = () => {
     setDeadline(0);
   }
 
+  const completeTask = (taskNameToDelete: string): void => {
+    setTodoList(todoList.filter((task) => {
+    return task.taskName != taskNameToDelete }))
+  };
+  
 
   return (
     <div className="App">
@@ -37,7 +43,7 @@ const  App: FC = () => {
       </div>
       <div className="todoList">
       {todoList.map((task: ITask, key: number) => {
-          return <TodoTask key={key} task={task}  />;
+          return <TodoTask key={key} task={task} completeTask={completeTask}  />;
         } )}
       </div>
         
