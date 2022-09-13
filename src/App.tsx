@@ -1,9 +1,8 @@
 import React, {FC, useState, ChangeEvent} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import TodoTask from './Components/TodoTask';
 import {ITask } from './interfaces';
-import { convertTypeAcquisitionFromJson } from 'typescript';
+
 
 const  App: FC = () => {
 
@@ -28,7 +27,7 @@ const  App: FC = () => {
 
   const completeTask = (taskNameToDelete: string): void => {
     setTodoList(todoList.filter((task) => {
-    return task.taskName != taskNameToDelete }))
+    return task.taskName !== taskNameToDelete }))
   };
   
 
